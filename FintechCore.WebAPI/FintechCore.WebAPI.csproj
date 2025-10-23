@@ -18,4 +18,9 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FintechCore.Application\FintechCore.Application.csproj" />
+      <ProjectReference Include="..\FintechCore.Infrastructure\FintechCore.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

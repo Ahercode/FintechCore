@@ -218,6 +218,16 @@
         "runtime": {
           "lib/netcoreapp2.0/_._": {}
         }
+      },
+      "FintechCore.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/FintechCore.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FintechCore.Domain.dll": {}
+        }
       }
     }
   },
@@ -658,11 +668,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "FintechCore.Domain/1.0.0": {
+      "type": "project",
+      "path": "../FintechCore.Domain/FintechCore.Domain.csproj",
+      "msbuildProject": "../FintechCore.Domain/FintechCore.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "AutoMapper >= 15.0.1"
+      "AutoMapper >= 15.0.1",
+      "FintechCore.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -689,7 +705,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/ahercode/RiderProjects/FintechCore/FintechCore.Domain/FintechCore.Domain.csproj": {
+              "projectPath": "/Users/ahercode/RiderProjects/FintechCore/FintechCore.Domain/FintechCore.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
