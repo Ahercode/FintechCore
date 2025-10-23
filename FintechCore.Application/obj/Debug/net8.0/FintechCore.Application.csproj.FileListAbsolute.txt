@@ -1,0 +1,16 @@
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/bin/Debug/net8.0/FintechCore.Application.deps.json
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/bin/Debug/net8.0/FintechCore.Application.dll
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/bin/Debug/net8.0/FintechCore.Application.pdb
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/bin/Debug/net8.0/FintechCore.Domain.dll
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/bin/Debug/net8.0/FintechCore.Domain.pdb
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/FintechCore.Application.csproj.AssemblyReference.cache
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/FintechCore.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/FintechCore.Application.AssemblyInfoInputs.cache
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/FintechCore.Application.AssemblyInfo.cs
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/FintechCore.Application.csproj.CoreCompileInputs.cache
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/FintechCore.Application.sourcelink.json
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/FintechC.6D73E19E.Up2Date
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/FintechCore.Application.dll
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/refint/FintechCore.Application.dll
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/FintechCore.Application.pdb
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Application/obj/Debug/net8.0/ref/FintechCore.Application.dll

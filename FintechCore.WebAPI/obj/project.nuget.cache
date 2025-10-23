@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "14p7L3qJ5yE=",
+  "dgSpecHash": "sB4iEX67nU0=",
   "success": true,
   "projectFilePath": "/Users/ahercode/RiderProjects/FintechCore/FintechCore.WebAPI/FintechCore.WebAPI.csproj",
   "expectedPackageFiles": [
     "/Users/ahercode/.nuget/packages/automapper/15.0.1/automapper.15.0.1.nupkg.sha512",
-    "/Users/ahercode/.nuget/packages/microsoft.aspnetcore.openapi/7.0.20/microsoft.aspnetcore.openapi.7.0.20.nupkg.sha512",
-    "/Users/ahercode/.nuget/packages/microsoft.bcl.hashcode/6.0.0/microsoft.bcl.hashcode.6.0.0.nupkg.sha512",
+    "/Users/ahercode/.nuget/packages/microsoft.aspnetcore.openapi/8.0.21/microsoft.aspnetcore.openapi.8.0.21.nupkg.sha512",
     "/Users/ahercode/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/ahercode/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "/Users/ahercode/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
@@ -23,7 +22,9 @@
     "/Users/ahercode/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "/Users/ahercode/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "/Users/ahercode/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
-    "/Users/ahercode/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512"
+    "/Users/ahercode/.nuget/packages/microsoft.netcore.app.ref/8.0.17/microsoft.netcore.app.ref.8.0.17.nupkg.sha512",
+    "/Users/ahercode/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.17/microsoft.aspnetcore.app.ref.8.0.17.nupkg.sha512",
+    "/Users/ahercode/.nuget/packages/microsoft.netcore.app.host.osx-x64/8.0.17/microsoft.netcore.app.host.osx-x64.8.0.17.nupkg.sha512"
   ],
   "logs": []
 }
