@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Repositories\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\FintechCore.Application\FintechCore.Application.csproj" />
       <ProjectReference Include="..\FintechCore.Domain\FintechCore.Domain.csproj" />
     </ItemGroup>
