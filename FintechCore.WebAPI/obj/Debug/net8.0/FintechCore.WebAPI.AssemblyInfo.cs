@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FintechCore.WebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15a68d8d4b1cace662941776aaa534e09301e02f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a642b7b2b7af070b1960e2c19543498785d670bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("FintechCore.WebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FintechCore.WebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
