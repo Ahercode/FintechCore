@@ -20,61 +20,68 @@ public class FieldService: IFieldService
         _mapper = mapper;
     }
 
-    public Task<IEnumerable<FieldDto>> GetAllFieldesAsync()
+    public async Task<IEnumerable<FieldDto>> GetAllFieldesAsync()
     {
         _logger.LogInformation("Getting all fields");
-        var fields = _unitOfWork.FieldRepository.GetAll();
-        return Task.FromResult(_mapper.Map<IEnumerable<FieldDto>>(fields));
+        var fields = await  _unitOfWork.FieldRepository.GetAll();
+        return _mapper.Map<IEnumerable<FieldDto>>(fields);
     }
 
-    public Task<FieldDto> GetFieldByIdAsync(Guid id)
+    public async Task<FieldDto> GetFieldByIdAsync(Guid id)
     {
         _logger.LogInformation("Getting field with id {Id}", id);
-        var field = _unitOfWork.FieldRepository.GetById(id);
+        var field = await _unitOfWork.FieldRepository.GetById(id);
         if (field == null)
         {
             _logger.LogWarning("Field with id {Id} not found", id);
             throw new KeyNotFoundException($"Field with id {id} not found");
         }
-        return Task.FromResult(_mapper.Map<FieldDto>(field));
+        return _mapper.Map<FieldDto>(field);
     }
 
-    public Task<FieldDto> CreateFieldAsync(CreateFieldDto dto)
+    public async Task<FieldDto> CreateFieldAsync(CreateFieldDto dto)
     {
         _logger.LogInformation("Creating a new field");
         var field = _mapper.Map<Field>(dto);
+        
+        field.FieldId=Guid.NewGuid();
+        field.DateCreated=DateTime.UtcNow;
+        
         _unitOfWork.FieldRepository.Add(field);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(_mapper.Map<FieldDto>(field));
+        await _unitOfWork.CompleteAsync();
+        return _mapper.Map<FieldDto>(field);
     }
 
-    public Task<FieldDto> UpdateFieldAsync(Guid id, UpdateFieldDto dto)
+    public async Task<FieldDto> UpdateFieldAsync(Guid id, UpdateFieldDto dto)
     {
         _logger.LogInformation("Updating field with id {Id}", id);
-        var field = _unitOfWork.FieldRepository.GetById(id);
+        var field =await  _unitOfWork.FieldRepository.GetById(id);
         if (field == null)
         {
             _logger.LogWarning("Field with id {Id} not found", id);
             throw new KeyNotFoundException($"Field with id {id} not found");
         }
-        var updatedField = _mapper.Map<Field>(field);
-        _unitOfWork.FieldRepository.Update(updatedField);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(_mapper.Map<FieldDto>(updatedField));
+        _mapper.Map(dto, field);
+        
+        field.DateModified = DateTime.UtcNow;
+        
+        _unitOfWork.FieldRepository.Update(field);
+        await _unitOfWork.CompleteAsync();
+        return _mapper.Map<FieldDto>(field);
     }
 
-    public Task<bool> DeleteFieldAsync(Guid id)
+    public async Task<bool> DeleteFieldAsync(Guid id)
     {
         _logger.LogInformation("Deleting field with id {Id}", id);
-        var field = _unitOfWork.FieldRepository.GetById(id);
+        var field = await  _unitOfWork.FieldRepository.GetById(id);
         if (field == null)
         {
             _logger.LogWarning("Field with id {Id} not found", id);
             throw new KeyNotFoundException($"Field with id {id} not found");
         }
-        var deletedField = _mapper.Map<Field>(field);
-        _unitOfWork.FieldRepository.Delete(deletedField);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(true);
+     
+        _unitOfWork.FieldRepository.Delete(field);
+        await _unitOfWork.CompleteAsync();
+        return true;
     }
 }

@@ -43,6 +43,8 @@ public class BranchService : IBranchService
         _logger.LogInformation("Creating a new branch");
         var branch = _mapper.Map<Branch>(dto);
         branch.CreatedAt=DateTime.UtcNow;
+        branch.IsActive=true;
+        
         _unitOfWork.BranchRepository.Add(branch);
         await _unitOfWork.CompleteAsync();
         return _mapper.Map<BranchDto>(branch);

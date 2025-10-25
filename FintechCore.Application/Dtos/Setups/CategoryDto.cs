@@ -2,6 +2,7 @@ namespace FintechCore.Application.Dtos.Setups;
 
 public class CategoryDto : UpdateCategoryDto
 {
+    public Guid CatId { get; set; }
     public DateTime? DateCreated { get; set; }
     public DateTime? DateModified { get; set; }
 }
@@ -23,6 +24,6 @@ public class CreateCategoryDto
 
 public class UpdateCategoryDto : CreateCategoryDto
 {
-    public Guid CatId { get; set; }
+
     public string? ModifiedBy { get; set; }
 }

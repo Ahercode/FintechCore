@@ -13,6 +13,5 @@ public class Lov
     public string LovValue { get; set; }
     public string? StatusLabel { get; set; }
     public string? ModifiedBy { get; set; }
-    
     public int? Rank { get; set; }
 }

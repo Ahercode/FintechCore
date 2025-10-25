@@ -45,6 +45,7 @@ public class BranchesController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    
     public async Task<IActionResult> DeleteBranch(int id)
     {
         await _branchService.DeleteBranchAsync(id);
