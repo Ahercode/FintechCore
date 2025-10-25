@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Dtos\Setups\" />
       <Folder Include="Extentions\" />
       <Folder Include="Services\" />
     </ItemGroup>
