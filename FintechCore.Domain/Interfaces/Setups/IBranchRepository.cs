@@ -4,5 +4,5 @@ namespace FintechCore.Domain.Interfaces.Setups;
 
 public interface IBranchRepository : IGenericRepository<Branch>
 {
-    
+   
 }
