@@ -16,3 +16,5 @@
 /Users/ahercode/RiderProjects/FintechCore/FintechCore.Infrastructure/obj/Debug/net8.0/refint/FintechCore.Infrastructure.dll
 /Users/ahercode/RiderProjects/FintechCore/FintechCore.Infrastructure/obj/Debug/net8.0/FintechCore.Infrastructure.pdb
 /Users/ahercode/RiderProjects/FintechCore/FintechCore.Infrastructure/obj/Debug/net8.0/ref/FintechCore.Infrastructure.dll
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Infrastructure/bin/Debug/net8.0/FintechCore.Infrastructure.runtimeconfig.json
+/Users/ahercode/RiderProjects/FintechCore/FintechCore.Infrastructure/obj/Debug/net8.0/FintechCore.Infrastructure.genruntimeconfig.cache

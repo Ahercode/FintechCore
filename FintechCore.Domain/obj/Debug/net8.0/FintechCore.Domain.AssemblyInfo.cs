@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FintechCore.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a642b7b2b7af070b1960e2c19543498785d670bb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba188e80e586e433b70f6c8f6a8f4c7aaf7ca06c")]
 [assembly: System.Reflection.AssemblyProductAttribute("FintechCore.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FintechCore.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

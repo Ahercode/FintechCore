@@ -29,4 +29,8 @@
       <ProjectReference Include="..\FintechCore.Infrastructure\FintechCore.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Controllers\Setups\" />
+    </ItemGroup>
+
 </Project>
