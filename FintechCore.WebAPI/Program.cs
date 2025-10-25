@@ -1,6 +1,10 @@
-using FintechCore.Application.Extentions;
+using FintechCore.Application.MappingProfiles;
+using FintechCore.Domain.Interfaces;
 using FintechCore.Infrastructure.DBContext;
+using FintechCore.Infrastructure.UnitOfWork;
+using FintechCore.WebAPI.Extentions;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +15,12 @@ builder.Services.AddDbContext<FintechCoreContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(DomainToResponse).Assembly);
+builder.Services.AddAutoMapper(typeof(RequestToDomain).Assembly);
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddApplicationServices();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

@@ -5,16 +5,16 @@ using FintechCore.Application.Services.Setups.lov;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FintechCore.Application.Extentions;
+namespace FintechCore.WebAPI.Extentions;
 
 public static class ServiceCollectionConfig
 {
-    public static void  AddApplicationServices(this IServiceCollection services)
+    public static void AddApplicationServices(this IServiceCollection services)
     {
         services.AddScoped<IBranchService, BranchService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IFieldService, FieldService>();
-        services.AddScoped<IFieldService, IFieldService>();
+        services.AddScoped<IFieldService, FieldService>();
         services.AddScoped<ILovService, LovService>();
     }
 }

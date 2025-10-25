@@ -14,6 +14,7 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
     </ItemGroup>
@@ -27,10 +28,6 @@
     <ItemGroup>
       <ProjectReference Include="..\FintechCore.Application\FintechCore.Application.csproj" />
       <ProjectReference Include="..\FintechCore.Infrastructure\FintechCore.Infrastructure.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controllers\Setups\" />
     </ItemGroup>
 
 </Project>

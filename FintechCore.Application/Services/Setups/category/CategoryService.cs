@@ -26,40 +26,44 @@ public class CategoryService : ICategoryService
         return Task.FromResult(_mapper.Map<IEnumerable<CategoryDto>>(categories));
     }
 
-    public Task<CategoryDto> GetCategoryByIdAsync(Guid id)
+    public async Task<CategoryDto> GetCategoryByIdAsync(Guid id)
     {
         _logger.LogInformation("Getting category with id {Id}", id);
-        var category = _unitOfWork.CategoryRepository.GetById(id);
+        var category = await  _unitOfWork.CategoryRepository.GetById(id);
         if (category == null)
         {
             _logger.LogWarning("Category with id {Id} not found", id);
             throw new KeyNotFoundException($"Category with id {id} not found");
         }
-        return Task.FromResult(_mapper.Map<CategoryDto>(category));
+        return _mapper.Map<CategoryDto>(category);
     }
 
-    public Task<CategoryDto> CreateCategoryAsync(CreateCategoryDto dto)
+    public async Task<CategoryDto> CreateCategoryAsync(CreateCategoryDto dto)
     {
         _logger.LogInformation("Creating a new category");
         var category = _mapper.Map<Category>(dto);
+        category.DateCreated= DateTime.UtcNow;
         _unitOfWork.CategoryRepository.Add(category);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(_mapper.Map<CategoryDto>(category));
+        await _unitOfWork.CompleteAsync();
+        return _mapper.Map<CategoryDto>(category);
     }
 
-    public Task<CategoryDto> UpdateCategoryAsync(Guid id, UpdateCategoryDto dto)
+    public async Task<CategoryDto> UpdateCategoryAsync(Guid id, UpdateCategoryDto dto)
     {
         _logger.LogInformation("Updating category with id {Id}", id);
-        var category = _unitOfWork.CategoryRepository.GetById(id);
+        var category = await  _unitOfWork.CategoryRepository.GetById(id);
         if (category == null)
         {
             _logger.LogWarning("Category with id {Id} not found", id);
             throw new KeyNotFoundException($"Category with id {id} not found");
         }
-        var updatedCategory = _mapper.Map<Category>(category);
-        _unitOfWork.CategoryRepository.Update(updatedCategory);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(_mapper.Map<CategoryDto>(updatedCategory));
+        _mapper.Map(dto, category);
+        
+        category.DateModified= DateTime.UtcNow;
+        
+        _unitOfWork.CategoryRepository.Update(category);
+        await _unitOfWork.CompleteAsync();
+        return _mapper.Map<CategoryDto>(category);
     }
 
     public Task<bool> DeleteCategoryAsync(Guid id)

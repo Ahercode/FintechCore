@@ -30,21 +30,25 @@ public partial class FintechCoreContext : DbContext
         modelBuilder.Entity<Category>(entity =>
         {
             entity.ToTable("Category");
+            entity.HasKey(e => e.CatId);
         });
 
         modelBuilder.Entity<Form>(entity =>
         {
             entity.ToTable("Form");
+            entity.HasKey(e => e.FormId);
         });
 
         modelBuilder.Entity<Field>(entity =>
         {
             entity.ToTable("Field");
+            entity.HasKey(e => e.FieldId);
         });
 
         modelBuilder.Entity<Lov>(entity =>
         {
             entity.ToTable("Lov");
+            entity.HasKey(e => e.LovId);
         });
         
     }
