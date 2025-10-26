@@ -9,6 +9,8 @@ public interface IUnitOfWork : IDisposable
     IFieldRepository FieldRepository { get; }
     IFormRepository FormRepository { get; }
     ILovRepository LovRepository { get; }
+    IUserRepository UserRepository { get; }
+    IUserGroupRepository UserGroupRepository { get; }
     
     Task<bool> CompleteAsync();
 }

@@ -18,5 +18,10 @@ public class RequestToDomain : Profile
         CreateMap<UpdateFormDto, Form>();
         CreateMap<CreateLovDto, Lov>();
         CreateMap<UpdateLovDto, Lov>();
+        CreateMap<CreateUserDto, User>();
+        CreateMap<UpdateUserDto, User>();
+        CreateMap<CreateUserGroupDto, UserGroup>();
+        CreateMap<UpdateUserGroupDto, UserGroup>();
+        
     }
 }

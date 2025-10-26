@@ -26,6 +26,8 @@ public class UnitOfWork : IUnitOfWork
         FieldRepository = new FieldRepository(_context, loggerFactory.CreateLogger<GenericRepository<Field>>());
         FormRepository = new FormRepository(_context, loggerFactory.CreateLogger<GenericRepository<Form>>());
         LovRepository = new LovRepository(_context, loggerFactory.CreateLogger<GenericRepository<Lov>>());
+        UserGroupRepository = new UserGroupRepository(_context, loggerFactory.CreateLogger<UserGroupRepository>());
+        UserRepository = new UserRepository(_context, loggerFactory.CreateLogger<UserRepository>());
     }
 
     public IBranchRepository BranchRepository { get; }
@@ -33,6 +35,8 @@ public class UnitOfWork : IUnitOfWork
     public IFieldRepository FieldRepository { get; }
     public IFormRepository FormRepository { get; }
     public ILovRepository LovRepository { get; }
+    public IUserRepository UserRepository { get; }
+    public IUserGroupRepository UserGroupRepository { get; }
         
     public async Task<bool> CompleteAsync()
     {

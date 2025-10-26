@@ -13,5 +13,7 @@ public class DomainToResponse : Profile
         CreateMap<Field, FieldDto>();
         CreateMap<Form, FormDto>();
         CreateMap<Lov, LovDto>();
+        CreateMap<User, UserDto>();
+        CreateMap<UserGroup, UserGroupDto>();
     }
 }

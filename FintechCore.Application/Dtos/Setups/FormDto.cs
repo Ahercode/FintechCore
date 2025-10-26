@@ -2,6 +2,7 @@ namespace FintechCore.Application.Dtos.Setups;
 
 public class FormDto
 {
+    public Guid FormId { get; set; }
     public DateTime? DateCreated { get; set; }
     public DateTime? DateModified { get; set; }
 }
@@ -9,7 +10,7 @@ public class FormDto
 public class CreateFormDto
 {
     public Guid CatId { get; set; }
-    public string FormName { get; set; }
+    public required string FormName { get; set; }
     public string? Caption { get; set; }
     public string? Tooltip { get; set; }
     public bool? RequireVerification { get; set; }
@@ -33,6 +34,5 @@ public class CreateFormDto
 
 public class UpdateFormDto: CreateFormDto
 {
-    public Guid FormId { get; set; }
     public string? ModifiedBy { get; set; }
 }

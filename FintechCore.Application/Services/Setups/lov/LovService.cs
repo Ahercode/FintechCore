@@ -19,53 +19,59 @@ public class LovService : ILovService
         _mapper = mapper;
     }
 
-    public Task<IEnumerable<LovDto>> GetAllLovsAsync()
+    public async Task<IEnumerable<LovDto>> GetAllLovsAsync()
     {
         _logger.LogInformation("Getting all lovs");
-        var lovs = _unitOfWork.LovRepository.GetAll();
-        return Task.FromResult(_mapper.Map<IEnumerable<LovDto>>(lovs));
+        var lovs = await _unitOfWork.LovRepository.GetAll();
+        return _mapper.Map<IEnumerable<LovDto>>(lovs);
     }
 
-    public Task<LovDto> GetLovByIdAsync(Guid id)
+    public async Task<LovDto> GetLovByIdAsync(Guid id)
     {
         _logger.LogInformation("Getting lov with id {Id}", id);
-        var lov = _unitOfWork.LovRepository.GetById(id);
+        var lov = await _unitOfWork.LovRepository.GetById(id);
         if (lov == null)
         {
             _logger.LogWarning("Lov with id {Id} not found", id);
             throw new KeyNotFoundException($"Lov with id {id} not found");
         }
-        return Task.FromResult(_mapper.Map<LovDto>(lov));
+        return _mapper.Map<LovDto>(lov);
     }
 
-    public Task<LovDto> CreateLovAsync(CreateLovDto dto)
+    public async Task<LovDto> CreateLovAsync(CreateLovDto dto)
     {
         _logger.LogInformation("Creating a new lov");
         var lov = _mapper.Map<Lov>(dto);
+        
+        lov.LovId = Guid.NewGuid();
+        lov.DateCreated = DateTime.Now;
+        
         _unitOfWork.LovRepository.Add(lov);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(_mapper.Map<LovDto>(lov));
+        await _unitOfWork.CompleteAsync();
+        return _mapper.Map<LovDto>(lov);
     }
 
-    public Task<LovDto> UpdateLovAsync(Guid id, UpdateLovDto dto)
+    public async Task<LovDto> UpdateLovAsync(Guid id, UpdateLovDto dto)
     {
         _logger.LogInformation("Updating lov with id {Id}", id);
-        var lov = _unitOfWork.LovRepository.GetById(id);
+        var lov = await _unitOfWork.LovRepository.GetById(id);
         if (lov == null)
         {
             _logger.LogWarning("Lov with id {Id} not found", id);
             throw new KeyNotFoundException($"Lov with id {id} not found");
         }
-        var updatedLov = _mapper.Map<Lov>(lov);
-        _unitOfWork.LovRepository.Update(updatedLov);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(_mapper.Map<LovDto>(updatedLov));
+        
+        _mapper.Map(dto, lov);
+        
+        _unitOfWork.LovRepository.Update(lov);
+        await _unitOfWork.CompleteAsync();
+        return _mapper.Map<LovDto>(lov);
     }
 
-    public Task<bool> DeleteLovAsync(Guid id)
+    public async Task<bool> DeleteLovAsync(Guid id)
     {
         _logger.LogInformation("Deleting lov with id {Id}", id);
-        var lov = _unitOfWork.LovRepository.GetById(id);
+        var lov = await  _unitOfWork.LovRepository.GetById(id);
         if (lov == null)
         {
             _logger.LogWarning("Lov with id {Id} not found", id);
@@ -73,7 +79,7 @@ public class LovService : ILovService
         }
         var deletedLov = _mapper.Map<Lov>(lov);
         _unitOfWork.LovRepository.Delete(deletedLov);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(true);
+        await _unitOfWork.CompleteAsync();
+        return true;
     }
 }

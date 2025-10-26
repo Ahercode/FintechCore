@@ -19,53 +19,56 @@ public class FormService : IFormService
         _mapper = mapper;
     }
 
-    public Task<IEnumerable<FormDto>> GetAllFormesAsync()
+    public async Task<IEnumerable<FormDto>> GetAllFormesAsync()
     {
         _logger.LogInformation("Getting all forms");
-        var forms = _unitOfWork.FormRepository.GetAll();
-        return Task.FromResult(_mapper.Map<IEnumerable<FormDto>>(forms));
+        var forms = await  _unitOfWork.FormRepository.GetAll();
+        return _mapper.Map<IEnumerable<FormDto>>(forms);
     }
 
-    public Task<FormDto> GetFormByIdAsync(Guid id)
+    public async Task<FormDto> GetFormByIdAsync(Guid id)
     {
         _logger.LogInformation("Getting form with id {Id}", id);
-        var form = _unitOfWork.FormRepository.GetById(id);
+        var form = await _unitOfWork.FormRepository.GetById(id);
         if (form == null)
         {
             _logger.LogWarning("Form with id {Id} not found", id);
             throw new KeyNotFoundException($"Form with id {id} not found");
         }
-        return Task.FromResult(_mapper.Map<FormDto>(form));
+        return _mapper.Map<FormDto>(form);
     }
 
-    public Task<FormDto> CreateFormAsync(CreateFormDto dto)
+    public async  Task<FormDto> CreateFormAsync(CreateFormDto dto)
     {
         _logger.LogInformation("Creating a new form");
         var form = _mapper.Map<Form>(dto);
         _unitOfWork.FormRepository.Add(form);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(_mapper.Map<FormDto>(form));
+        await _unitOfWork.CompleteAsync();
+        return _mapper.Map<FormDto>(form);
     }
 
-    public Task<FormDto> UpdateFormAsync(Guid id, UpdateFormDto dto)
+    public async Task<FormDto> UpdateFormAsync(Guid id, UpdateFormDto dto)
     {
         _logger.LogInformation("Updating form with id {Id}", id);
-        var form = _unitOfWork.FormRepository.GetById(id);
+        var form = await _unitOfWork.FormRepository.GetById(id);
         if (form == null)
         {
             _logger.LogWarning("Form with id {Id} not found", id);
             throw new KeyNotFoundException($"Form with id {id} not found");
         }
-        var updatedForm = _mapper.Map<Form>(form);
-        _unitOfWork.FormRepository.Update(updatedForm);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(_mapper.Map<FormDto>(updatedForm));
+        _mapper.Map(dto, form);
+        
+        form.DateModified = DateTime.Now;
+        
+        _unitOfWork.FormRepository.Update(form);
+        await _unitOfWork.CompleteAsync();
+        return _mapper.Map<FormDto>(form);
     }
 
-    public Task<bool> DeleteFormAsync(Guid id)
+    public async Task<bool> DeleteFormAsync(Guid id)
     {
         _logger.LogInformation("Deleting form with id {Id}", id);
-        var form = _unitOfWork.FormRepository.GetById(id);
+        var form = await  _unitOfWork.FormRepository.GetById(id);
         if (form == null)
         {
             _logger.LogWarning("Form with id {Id} not found", id);
@@ -73,7 +76,7 @@ public class FormService : IFormService
         }
         var deletedForm = _mapper.Map<Form>(form);
         _unitOfWork.FormRepository.Delete(deletedForm);
-        _unitOfWork.CompleteAsync();
-        return Task.FromResult(true);
+        await _unitOfWork.CompleteAsync();
+        return true;
     }
 }
