@@ -77,8 +77,8 @@ public class LovService : ILovService
             _logger.LogWarning("Lov with id {Id} not found", id);
             throw new KeyNotFoundException($"Lov with id {id} not found");
         }
-        var deletedLov = _mapper.Map<Lov>(lov);
-        _unitOfWork.LovRepository.Delete(deletedLov);
+        
+        _unitOfWork.LovRepository.Delete(lov);
         await _unitOfWork.CompleteAsync();
         return true;
     }

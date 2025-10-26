@@ -74,8 +74,8 @@ public class FormService : IFormService
             _logger.LogWarning("Form with id {Id} not found", id);
             throw new KeyNotFoundException($"Form with id {id} not found");
         }
-        var deletedForm = _mapper.Map<Form>(form);
-        _unitOfWork.FormRepository.Delete(deletedForm);
+      
+        _unitOfWork.FormRepository.Delete(form);
         await _unitOfWork.CompleteAsync();
         return true;
     }

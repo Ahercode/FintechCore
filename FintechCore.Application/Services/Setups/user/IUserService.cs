@@ -4,9 +4,9 @@ namespace FintechCore.Application.Services.Setups.user;
 
 public interface IUserService
 {
-    Task<IEnumerable<UserGroupDto>> GetAllUserGroupsAsync();
-    Task<UserGroupDto> GetUserGroupByIdAsync(int id);
-    Task<UserGroupDto> CreateUserGroupAsync(CreateUserGroupDto dto);
-    Task<UserGroupDto> UpdateUserGroupAsync(int id, UpdateUserGroupDto dto);
-    Task<bool> DeleteUserGroupAsync(int id);
+    Task<IEnumerable<UserDto>> GetAllUsersAsync();
+    Task<UserDto> GetUserByIdAsync(int id);
+    Task<UserDto> CreateUserAsync(CreateUserDto dto);
+    Task<UserDto> UpdateUserAsync(int id, UpdateUserDto dto);
+    Task<bool> DeleteUserAsync(int id);
 }

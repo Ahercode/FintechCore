@@ -18,6 +18,8 @@ public partial class FintechCoreContext : DbContext
     public virtual DbSet<Form> Forms { get; set; }
     public virtual DbSet<Field> Fields { get; set; }
     public virtual DbSet<Lov> Lovs { get; set; }
+    public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<UserGroup> UserGroups { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -50,6 +52,17 @@ public partial class FintechCoreContext : DbContext
             entity.ToTable("Lov");
             entity.HasKey(e => e.LovId);
         });
+        
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.ToTable("User");
+        });
+        
+        modelBuilder.Entity<UserGroup>(entity =>
+        {
+            entity.ToTable("UserGroup");
+        });
+
         
     }
     

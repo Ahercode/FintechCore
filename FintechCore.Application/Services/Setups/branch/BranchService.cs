@@ -42,6 +42,7 @@ public class BranchService : IBranchService
     {
         _logger.LogInformation("Creating a new branch");
         var branch = _mapper.Map<Branch>(dto);
+        
         branch.CreatedAt=DateTime.UtcNow;
         branch.IsActive=true;
         
@@ -77,7 +78,7 @@ public class BranchService : IBranchService
             _logger.LogWarning("Branch with id {Id} not found", id);
             throw new KeyNotFoundException($"Branch with id {id} not found");
         }
-        // delete the tracked entity instance directly to avoid creating a second instance with the same key
+        
         _unitOfWork.BranchRepository.Delete(branch);
         await _unitOfWork.CompleteAsync();
         return true;

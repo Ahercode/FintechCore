@@ -1,6 +1,7 @@
 using AutoMapper;
 using FintechCore.Application.Dtos.Setups;
 using FintechCore.Application.Services.Setups.lov;
+using FintechCore.Domain.Entities.Setups;
 using FintechCore.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 
@@ -19,28 +20,66 @@ public class UserService : IUserService
         _mapper = mapper;
     }
 
-    public Task<IEnumerable<UserGroupDto>> GetAllUserGroupsAsync()
+    public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
     {
-        throw new NotImplementedException();
+        _logger.LogInformation("Getting all user groups");
+        var users = await _unitOfWork.UserRepository.GetAll();
+        return _mapper.Map<IEnumerable<UserDto>>(users);
     }
 
-    public Task<UserGroupDto> GetUserGroupByIdAsync(int id)
+    public async Task<UserDto> GetUserByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        _logger.LogInformation("Getting user with id {Id}", id);
+        var user = await _unitOfWork.UserRepository.GetById(id);
+        if (user == null)
+        {
+            _logger.LogWarning("User with id {Id} not found", id);
+            throw new KeyNotFoundException($"User with id {id} not found");
+        }
+        return _mapper.Map<UserDto>(user);
     }
 
-    public Task<UserGroupDto> CreateUserGroupAsync(CreateUserGroupDto dto)
+    public async Task<UserDto> CreateUserAsync(CreateUserDto dto)
     {
-        throw new NotImplementedException();
+        _logger.LogInformation("Creating a new user");
+        var user = _mapper.Map<User>(dto);
+
+        user.DateCreated = DateTime.UtcNow;
+        
+        _unitOfWork.UserRepository.Add(user);
+        await _unitOfWork.CompleteAsync();
+        return _mapper.Map<UserDto>(user);
     }
 
-    public Task<UserGroupDto> UpdateUserGroupAsync(int id, UpdateUserGroupDto dto)
+    public async Task<UserDto> UpdateUserAsync(int id, UpdateUserDto dto)
     {
-        throw new NotImplementedException();
+        _logger.LogInformation("Updating user with id {Id}", id);
+        var user = await _unitOfWork.UserRepository.GetById(id);
+        if (user == null)
+        {
+            _logger.LogWarning("User with id {Id} not found", id);
+            throw new KeyNotFoundException($"User with id {id} not found");
+        }
+        
+        _mapper.Map(dto, user);
+        
+        _unitOfWork.UserRepository.Update(user);
+        await _unitOfWork.CompleteAsync();
+        return _mapper.Map<UserDto>(user);
     }
 
-    public Task<bool> DeleteUserGroupAsync(int id)
+    public async Task<bool> DeleteUserAsync(int id)
     {
-        throw new NotImplementedException();
+        _logger.LogInformation("Deleting user with id {Id}", id);
+        var user = await _unitOfWork.UserRepository.GetById(id);
+        if (user == null)
+        {
+            _logger.LogWarning("User with id {Id} not found", id);
+            throw new KeyNotFoundException($"User with id {id} not found");
+        }
+        
+        _unitOfWork.UserRepository.Delete(user);
+        await _unitOfWork.CompleteAsync();
+        return true;
     }
 }
