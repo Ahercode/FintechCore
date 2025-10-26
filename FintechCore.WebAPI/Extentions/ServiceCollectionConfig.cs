@@ -2,6 +2,8 @@ using FintechCore.Application.Services.Setups.branch;
 using FintechCore.Application.Services.Setups.category;
 using FintechCore.Application.Services.Setups.field;
 using FintechCore.Application.Services.Setups.lov;
+using FintechCore.Application.Services.Setups.user;
+using FintechCore.Application.Services.Setups.userGroup;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,5 +18,7 @@ public static class ServiceCollectionConfig
         services.AddScoped<IFieldService, FieldService>();
         services.AddScoped<IFieldService, FieldService>();
         services.AddScoped<ILovService, LovService>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IUserGroupService, UserGroupService>();
     }
 }
