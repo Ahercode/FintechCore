@@ -2,6 +2,7 @@ namespace FintechCore.Application.Dtos.Setups;
 
 public class FieldDto : UpdateFieldDto
 {
+    public Guid FieldId { get; set; }
     public DateTime? DateCreated { get; set; }
     public DateTime? DateModified { get; set; }
 }
@@ -34,6 +35,5 @@ public class CreateFieldDto
 
 public class UpdateFieldDto : CreateFieldDto
 {
-    public Guid FieldId { get; set; }
     public string? ModifiedBy { get; set; }
 }

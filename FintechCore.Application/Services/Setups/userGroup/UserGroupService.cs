@@ -44,6 +44,8 @@ public class UserGroupService : IUserGroupService
         _logger.LogInformation("Creating a new user group");
         var userGroup = _mapper.Map<UserGroup>(dto);
         
+        userGroup.Disabled = 0;
+        
         _unitOfWork.UserGroupRepository.Add(userGroup);
         await _unitOfWork.CompleteAsync();
         return _mapper.Map<UserGroupDto>(userGroup);
@@ -57,6 +59,11 @@ public class UserGroupService : IUserGroupService
         {
             _logger.LogWarning("User group with id {Id} not found", id);
             throw new KeyNotFoundException($"User group with id {id} not found");
+        }
+        
+        if (dto.Disabled == 1)
+        {
+            userGroup.DateDisabled = DateTime.UtcNow;
         }
         
         _mapper.Map(dto, userGroup);

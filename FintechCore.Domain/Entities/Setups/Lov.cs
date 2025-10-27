@@ -9,7 +9,7 @@ public class Lov
     public int? Status { get; set; }
     public DateTime? DateCreated { get; set; }
     public string? CreatedBy { get; set; } 
-    public DateTime? Mod { get; set; }
+    public DateTime? DateModified { get; set; }
     public string LovValue { get; set; }
     public string? StatusLabel { get; set; }
     public string? ModifiedBy { get; set; }

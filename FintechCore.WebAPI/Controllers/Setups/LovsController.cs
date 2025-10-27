@@ -36,7 +36,7 @@ public class LovsController : ControllerBase
     public async Task<IActionResult> CreateLov([FromBody] CreateLovDto dto)
     {
         var lov = await _lovService.CreateLovAsync(dto);
-        return Ok(lov);
+        return CreatedAtAction(nameof(GetLovById), new { id = lov.LovId }, lov);
     }
     
     [HttpDelete("{id}")]

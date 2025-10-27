@@ -17,9 +17,9 @@ public class CreateUserDto
     
     public required string Username { get; set; }
 
-    public int UserGroupId { get; set; }
+    public int? UserGroupId { get; set; }
     
-    public required string BranchId { get; set; }
+    public int? BranchId { get; set; }
     
 }
 

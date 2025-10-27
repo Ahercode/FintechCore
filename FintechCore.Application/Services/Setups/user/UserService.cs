@@ -45,6 +45,8 @@ public class UserService : IUserService
         var user = _mapper.Map<User>(dto);
 
         user.DateCreated = DateTime.UtcNow;
+        user.Status= 1;
+        user.Disabled = 0;
         
         _unitOfWork.UserRepository.Add(user);
         await _unitOfWork.CompleteAsync();

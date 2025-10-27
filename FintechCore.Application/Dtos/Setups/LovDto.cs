@@ -1,7 +1,8 @@
 namespace FintechCore.Application.Dtos.Setups;
 
-public class LovDto
+public class LovDto : UpdateLovDto
 {
+    public Guid LovId { get; set; }
     public DateTime? DateCreated { get; set; }
     public DateTime? DateModified { get; set; }
 }
@@ -18,8 +19,7 @@ public class CreateLovDto
     public int? Rank { get; set; }
 }
 
-public class UpdateLovDto
+public class UpdateLovDto : CreateLovDto
 {
-    public Guid LovId { get; set; }
     public string? ModifiedBy { get; set; }
 }

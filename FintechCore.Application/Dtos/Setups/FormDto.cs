@@ -1,6 +1,6 @@
 namespace FintechCore.Application.Dtos.Setups;
 
-public class FormDto
+public class FormDto: UpdateFormDto
 {
     public Guid FormId { get; set; }
     public DateTime? DateCreated { get; set; }
